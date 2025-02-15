@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Book & Weather API",
+      "description": "API for managing books and retrieving weather data",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/books": {
+        "get": {
+          "summary": "Retrieve all books",
+          "responses": {
+            "200": {
+              "description": "List of books"
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new book",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "author": { "type": "string" },
+                  "year": { "type": "integer" },
+                  "genre": { "type": "string" }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": { "description": "Book added successfully" }
+          }
+        }
+      },
+      "/weather/{city}": {
+        "get": {
+          "summary": "Get weather by city",
+          "parameters": [
+            {
+              "name": "city",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": { "description": "Weather data retrieved successfully" }
+          }
+        }
+      }
+    }
+  }
+  
